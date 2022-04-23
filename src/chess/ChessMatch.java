@@ -1,6 +1,9 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 public class ChessMatch {
 	
@@ -11,12 +14,13 @@ public class ChessMatch {
 	// creates the board with size of it
 	public ChessMatch() {
 		board = new Board(8,8);
+		initialSetup();
 	}
 	
 	public ChessPiece[][] getPieces() { 
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		
-		// for each position in mat, we will interace piece by piece to downcast for ChessPiece
+		// for each position in mat, we will interact piece by piece to downcast for ChessPiece
 		for(int i=0; i<board.getRows(); i++) {
 			for(int j=0; j<board.getColumns(); j++) {
 				// downcast to ChessPiece so program can process as ChessPiece instead of Piece (general)
@@ -25,6 +29,11 @@ public class ChessMatch {
 		}
 		
 		return mat;
+	}
+	
+	private void initialSetup() {
+		board.placePiece(new Rook(board, Color.BLACK), new Position(2, 1));
+		board.placePiece(new King(board, Color.WHITE), new Position(2, 2));
 	}
 
 }
