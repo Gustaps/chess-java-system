@@ -1,12 +1,13 @@
 package applicaton;
 
-import boardgame.Piece;
+import java.util.Scanner;
+
 import chess.ChessPiece;
+import chess.ChessPosition;
 import chess.Color;
 
 // User Interface Class
 public class UI {
-
 
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
@@ -29,6 +30,16 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+	
+	public static ChessPosition readChessPosition(Scanner sc) {
+		// scanner is instantiated in main program
+		String s = sc.nextLine();
+		char column = s.charAt(0);
+		int row = Integer.parseInt(s.substring(1));
+		
+		return new ChessPosition(column, row);
+	}
+	
 	public static void printBoard(ChessPiece[][] pieces) {
 		
 		// considering matrix with both sizes with same size (Square matrix 8x8)
