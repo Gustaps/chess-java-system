@@ -16,6 +16,11 @@ public class Bishop extends ChessPiece {
 		return "B";
 	}
 
+	private boolean canMove(Position position) {
+		ChessPiece p = (ChessPiece) getBoard().piece(position);
+		return (p == null) || (p.getColor() != getColor());
+	}
+
 	@Override
 	public boolean[][] possibleMoves() {
 		// all false positions during initialization
